@@ -8,4 +8,5 @@ repositories {
 
 dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    providedCompile 'com.sparkjava:spark-core:2.0.0'
 }
