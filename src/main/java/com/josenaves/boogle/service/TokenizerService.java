@@ -1,4 +1,4 @@
-package com.josenaves.boogle.web;
+package com.josenaves.boogle.service;
 
 import java.util.Arrays;
 import java.util.HashSet;

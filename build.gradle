@@ -1,10 +1,10 @@
 apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'war'
+apply plugin: 'jetty'
 
 sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
-   
-apply plugin: 'war'
-apply plugin: 'jetty'
 
 repositories {
     mavenCentral()

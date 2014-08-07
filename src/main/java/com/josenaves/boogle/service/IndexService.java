@@ -1,12 +1,15 @@
-package com.josenaves.boogle.web;
+package com.josenaves.boogle.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import com.google.gson.Gson;
 import com.josenaves.boogle.model.Document;
+import com.josenaves.boogle.model.Match;
 
 public final class IndexService {
 	
@@ -37,5 +40,12 @@ public final class IndexService {
 	
 	public Map<String, Set<Integer>> listDocuments() {
         return index;
+	}
+
+	public List<Match> search(String body) {
+		List<Match> list = new ArrayList<Match>();
+		list.add(new Match());
+		
+		return null;
 	}
 }
