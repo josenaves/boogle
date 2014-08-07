@@ -1,27 +1,40 @@
 package com.josenaves.boogle.web;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 import com.google.gson.Gson;
 
-public class IndexService {
+public final class IndexService {
 	
-	private static final HashMap<String, Integer> index = new HashMap<String, Integer>();
+	private static final Map<String, Set<Integer>> index = new HashMap<String, Set<Integer>>();
 
 	public void indexDocument(String body) {
         Document doc = new Gson().fromJson(body, Document.class);
-        // TODO must tokenize content and put each token on index
-        index.put(doc.getContent(), doc.getPageId());
+        
+        String[] tokens = new TokenizerService(doc.getContent())
+        	.removePunctuation()
+        	.toLowerCase()
+        	.removeDuplicates()
+        	.getTokens();
+        
+        for (String token : tokens) {
+    		Set<Integer> pages;
+        	if (index.get(token) == null) {
+        		pages = new HashSet<Integer>();
+        	}
+        	else {
+        		pages = index.get(token);
+        	}
+    		pages.add(doc.getPageId());
+    		index.put(token, pages);
+        }
 		return;
 	}
 	
-	public List<Document> listDocuments() {
-		List<Document> docs = new ArrayList<Document>();
-		for (String content : index.keySet()) {
-			docs.add(new Document(index.get(content), content));
-		}
-        return docs;
+	public Map<String, Set<Integer>> listDocuments() {
+        return index;
 	}
 }
