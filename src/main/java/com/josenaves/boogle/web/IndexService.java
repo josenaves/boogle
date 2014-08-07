@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.google.gson.Gson;
+import com.josenaves.boogle.model.Document;
 
 public final class IndexService {
 	

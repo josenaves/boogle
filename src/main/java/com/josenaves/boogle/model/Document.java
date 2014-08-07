@@ -1,4 +1,4 @@
-package com.josenaves.boogle.web;
+package com.josenaves.boogle.model;
 
 public final class Document {
 	private Integer pageId;
