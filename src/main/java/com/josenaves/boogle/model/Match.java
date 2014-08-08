@@ -1,20 +1,33 @@
 package com.josenaves.boogle.model;
 
 public class Match {
-	private PageScore pageScore;
-
-	public Match() {
+	private Integer pageId;
+	private Integer score;
+    
+    public Match() {
 	}
 
-	public Match(PageScore pg) {
-		this.pageScore = pg;
+    public Match(Integer pageId, Integer score) {
+    	this.pageId = pageId;
+    	this.score = score;
+	}
+    
+	public Integer getPageId() {
+		return pageId;
 	}
 
-	public PageScore getPageScore() {
-		return pageScore;
+
+	public void setPageId(Integer pageId) {
+		this.pageId = pageId;
 	}
 
-	public void setPageScore(PageScore pageScore) {
-		this.pageScore = pageScore;
+
+	public Integer getScore() {
+		return score;
 	}
+
+	public void setScore(Integer score) {
+		this.score = score;
+	}
+
 }

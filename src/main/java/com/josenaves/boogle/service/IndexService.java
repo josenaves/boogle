@@ -10,6 +10,7 @@ import java.util.Set;
 import com.google.gson.Gson;
 import com.josenaves.boogle.model.Document;
 import com.josenaves.boogle.model.Match;
+import com.josenaves.boogle.model.Matches;
 
 public final class IndexService {
 	
@@ -42,10 +43,11 @@ public final class IndexService {
         return index;
 	}
 
-	public List<Match> search(String body) {
+	public Matches search(String query) {
 		List<Match> list = new ArrayList<Match>();
-		list.add(new Match());
-		
-		return null;
+		list.add(new Match(1, 3));
+		list.add(new Match(2, 2));
+		list.add(new Match(3, 1));
+		return new Matches(list);
 	}
 }
