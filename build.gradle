@@ -15,4 +15,5 @@ dependencies {
     compile 'com.sparkjava:spark-core:2.0.0'
     compile 'org.slf4j:slf4j-simple:1.7.7'
     compile 'com.google.code.gson:gson:2.2.4'
+    testCompile 'junit:junit:4.10'
 }
