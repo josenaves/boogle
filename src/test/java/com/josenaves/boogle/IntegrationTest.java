@@ -27,7 +27,7 @@ public class IntegrationTest {
 		IndexController.main(null);
 		Thread.sleep(1000);
 	}
-
+	
 	@AfterClass
 	public static void afterClass() {
 		Spark.stop();

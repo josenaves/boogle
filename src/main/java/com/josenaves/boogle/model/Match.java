@@ -1,6 +1,6 @@
 package com.josenaves.boogle.model;
 
-public class Match {
+public class Match implements Comparable<Match>{
 	private Integer pageId;
 	private Integer score;
     
@@ -28,6 +28,13 @@ public class Match {
 
 	public void setScore(Integer score) {
 		this.score = score;
+	}
+
+	@Override
+	public int compareTo(Match o) {
+		if (this.score > o.score) return -1;
+		if (this.score < o.score) return 1;
+		return 0;
 	}
 
 }

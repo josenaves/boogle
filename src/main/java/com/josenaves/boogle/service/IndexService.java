@@ -1,6 +1,7 @@
 package com.josenaves.boogle.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -44,10 +45,35 @@ public final class IndexService {
 	}
 
 	public Matches search(String query) {
-		List<Match> list = new ArrayList<Match>();
-		list.add(new Match(1, 3));
-		list.add(new Match(2, 2));
-		list.add(new Match(3, 1));
-		return new Matches(list);
+		Map<Integer, Integer> results = new HashMap<Integer, Integer>();
+
+		// split it
+		String[] tokens = query.split("\\s+");
+		
+		// search terms in the index and compute the results
+		for (String token : tokens) {
+			Set<Integer> set = index.get(token);
+			if (set != null) {
+				for (Integer pageId : set) {
+					Integer score = results.get(pageId);
+					if (score != null) 
+						results.put(pageId, ++score);
+					else 
+						results.put(pageId, 1);
+				}
+			}
+		}
+		
+		List<Match> matches = new ArrayList<Match>();
+
+		// put the results on list
+		for (Integer pageId : results.keySet()) {
+			matches.add(new Match(pageId, results.get(pageId)));
+		}
+		
+		// sort the results by score
+		Collections.sort(matches);
+		
+		return new Matches(matches);
 	}
 }
