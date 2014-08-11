@@ -13,7 +13,7 @@ public class TokenizerService {
 	}
 	
 	public TokenizerService removePunctuation() {
-		token.replaceAll("[^a-zA-Z ]", "");
+		token = token.replaceAll("[^\\w\\s]","");
 		return this;
 	}
 	

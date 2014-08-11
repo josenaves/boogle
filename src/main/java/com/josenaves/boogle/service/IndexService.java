@@ -46,9 +46,13 @@ public final class IndexService {
 
 	public Matches search(String query) {
 		Map<Integer, Integer> results = new HashMap<Integer, Integer>();
-
-		// split it
-		String[] tokens = query.split("\\s+");
+		
+		// clean the input and split it
+		String[] tokens = new TokenizerService(query)
+			.removeDuplicates()
+			.removePunctuation()
+			.toLowerCase()
+			.getTokens();
 		
 		// search terms in the index and compute the results
 		for (String token : tokens) {
